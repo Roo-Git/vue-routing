@@ -10,6 +10,7 @@ const router = createRouter({
     { path: "/teams", component: TeamsList },
     { path: "/teams/:teamId", component: TeamMembers }, // dynamic segment
     { path: "/users", component: UsersList },
+    // { path: "/users", component: UsersList, alias: '/'},  // redirection with alias
   ],
 });
 
