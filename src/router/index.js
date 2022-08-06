@@ -11,6 +11,7 @@ const router = createRouter({
     { path: "/teams/:teamId", component: TeamMembers }, // dynamic segment
     { path: "/users", component: UsersList },
     // { path: "/users", component: UsersList, alias: '/'},  // redirection with alias
+    { path: "/:notFound(.*)", redirect: "/teams" }, // catch all routes  // component: Not found
   ],
 });
 
