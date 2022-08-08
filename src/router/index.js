@@ -2,6 +2,8 @@ import { createRouter, createWebHashHistory } from "vue-router";
 import TeamsList from "../components/teams/TeamsList.vue";
 import UsersList from "../components/users/UsersList.vue";
 import TeamMembers from "../components/teams/TeamMembers.vue";
+import TeamsFooter from "../components/teams/TeamsFooter.vue";
+import UsersFooter from "../components/users/UsersFooter.vue";
 
 const router = createRouter({
   history: createWebHashHistory(),
@@ -11,7 +13,7 @@ const router = createRouter({
     {
       name: "teams",
       path: "/teams",
-      component: TeamsList,
+      components: { default: TeamsList, footer: TeamsFooter },
       children: [
         {
           name: "team-members",
@@ -21,7 +23,11 @@ const router = createRouter({
         }, // dynamic segment
       ],
     },
-    { name: "users", path: "/users", component: UsersList },
+    {
+      name: "users",
+      path: "/users",
+      components: { default: UsersList, footer: UsersFooter },
+    },
     // { path: "/users", component: UsersList, alias: '/'},  // redirection with alias
     { name: "not-found", path: "/:notFound(.*)", redirect: "/teams" }, // catch all routes  // component: Not found
   ],
