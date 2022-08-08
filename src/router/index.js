@@ -18,7 +18,7 @@ const router = createRouter({
       children: [
         {
           name: "team-members",
-          path: "/teams/:teamId",
+          path: ":teamId",
           component: TeamMembers,
           props: true,
         }, // dynamic segment
