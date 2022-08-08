@@ -9,15 +9,21 @@ const router = createRouter({
     { path: "/", redirect: "/teams" }, // redirection to teams
 
     {
+      name: "teams",
       path: "/teams",
       component: TeamsList,
       children: [
-        { path: "/teams/:teamId", component: TeamMembers, props: true }, // dynamic segment
+        {
+          name: "team-members",
+          path: "/teams/:teamId",
+          component: TeamMembers,
+          props: true,
+        }, // dynamic segment
       ],
     },
-    { path: "/users", component: UsersList },
+    { name: "users", path: "/users", component: UsersList },
     // { path: "/users", component: UsersList, alias: '/'},  // redirection with alias
-    { path: "/:notFound(.*)", redirect: "/teams" }, // catch all routes  // component: Not found
+    { name: "not-found", path: "/:notFound(.*)", redirect: "/teams" }, // catch all routes  // component: Not found
   ],
 });
 
