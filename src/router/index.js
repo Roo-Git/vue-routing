@@ -8,7 +8,7 @@ const router = createRouter({
   routes: [
     { path: "/", redirect: "/teams" }, // redirection to teams
     { path: "/teams", component: TeamsList },
-    { path: "/teams/:teamId", component: TeamMembers }, // dynamic segment
+    { path: "/teams/:teamId", component: TeamMembers, props: true }, // dynamic segment
     { path: "/users", component: UsersList },
     // { path: "/users", component: UsersList, alias: '/'},  // redirection with alias
     { path: "/:notFound(.*)", redirect: "/teams" }, // catch all routes  // component: Not found
