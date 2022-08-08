@@ -31,13 +31,22 @@ const router = createRouter({
     // { path: "/users", component: UsersList, alias: '/'},  // redirection with alias
     { name: "not-found", path: "/:notFound(.*)", redirect: "/teams" }, // catch all routes  // component: Not found
   ],
-  scrollBehavior(to, from, savedPosition) {
-    console.log(to, from, savedPosition);
+  scrollBehavior(savedPosition) {
     if (savedPosition) {
       return savedPosition;
     }
     return { left: 0, top: 0 };
   },
+});
+
+router.beforeEach(function (to, from, next) {
+  // NAVIGATION GUARDS
+  //next(false);
+  //if (to.name === 'team-members) {
+  //next(true);
+  // } else {
+  //next({name: 'team-members, params: {teamId: 't2'}});
+  next(true);
 });
 
 export default router;
