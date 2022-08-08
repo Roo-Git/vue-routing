@@ -31,6 +31,13 @@ const router = createRouter({
     // { path: "/users", component: UsersList, alias: '/'},  // redirection with alias
     { name: "not-found", path: "/:notFound(.*)", redirect: "/teams" }, // catch all routes  // component: Not found
   ],
+  scrollBehavior(to, from, savedPosition) {
+    console.log(to, from, savedPosition);
+    if (savedPosition) {
+      return savedPosition;
+    }
+    return { left: 0, top: 0 };
+  },
 });
 
 export default router;
